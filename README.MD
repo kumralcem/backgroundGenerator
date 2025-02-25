@@ -1,5 +1,4 @@
 
-```markdown
 # Balatro Background Generator
 
 This is a Rust program that generates looping background videos in the style of the game Balatro. It uses noise functions and color interpolation to create smooth, mesmerizing animations.
@@ -123,18 +122,4 @@ Feel free to experiment with different color combinations, turbulence levels, pi
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-**Key improvements and considerations:**
-
-*   **Clear Instructions:** Provides step-by-step instructions for installation and usage.
-*   **Comprehensive Argument List:** Lists all command-line arguments with descriptions.
-*   **Examples:** Includes example commands to get users started.
-*   **Troubleshooting:** Addresses common issues and provides solutions.
-*   **Customization Encouragement:** Encourages users to experiment with different settings.
-*   **License Information:** Includes a section for the license.
-*   **Placeholders:** Replace `<repository_url>` with the actual URL of your GitHub repository.  Also, create a `LICENSE` file in your repository and update the license information accordingly.
-*   **Code Modification Notes:**  The "Video is not looping" and "Line artifacts" sections specifically mention the code modifications that might be necessary.
-
-This README provides a solid foundation for users to understand and use your Balatro Background Generator. Remember to adapt it to any specific details or features of your project.
-
 
