@@ -1,0 +1,13 @@
+[package]
+name = "balatro_bg"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+noise = "0.8"
+image = "0.24"
+imageproc = "0.23" 
+rayon = "1.7"
+clap = { version = "4.3", features = ["derive"] }
+indicatif = "0.17"
+derive_more = "0.99"
