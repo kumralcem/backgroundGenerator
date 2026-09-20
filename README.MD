@@ -45,11 +45,41 @@ PNG export works directly. Video export additionally requires [FFmpeg](https://f
   --pixelation 8 --scale 0.08 --speed 10
 ```
 
-### Rendered examples
+### Animated examples
 
-| Balatro | Grainient |
+Six-second seamless loops, exported at 360 × 240 and 12 FPS.
+
+| Balatro · amber & lagoon | Grainient · peach, violet & mint |
 | --- | --- |
-| ![Spiral paint background](assets/balatro.png) | ![Grainy gradient background](assets/grainient.png) |
+| ![Animated amber and turquoise Balatro spiral on deep navy](assets/balatro-example.gif) | ![Animated peach, violet and mint Grainient gradient with fine grain](assets/grainient-example.gif) |
+
+<details>
+<summary>Recreate these examples</summary>
+
+```sh
+./target/release/balatro_bg --style balatro --output balatro-example.mp4 \
+  --width 480 --height 320 --duration 6 --fps 15 --loop --pixelation 2 \
+  --swirl-radius 0.8 --swirl-amount 5 --spin-speed 0.65 --flow-speed 1.8 \
+  --turbulence 1.2 --lighting 0.12 \
+  --colors '#FFAB57' --colors '#20C9BB' --colors '#181D38'
+
+./target/release/balatro_bg --style grainient --output grainient-example.mp4 \
+  --width 480 --height 320 --duration 6 --fps 15 --loop --pixelation 1 \
+  --time-speed 0.7 --warp-speed 2 --warp-strength 0.4 --blend-angle -25 \
+  --blend-softness 0.45 --grain-amount 0.07 --contrast 1.2 \
+  --colors '#FFB38A' --colors '#8854E8' --colors '#66E0CC'
+
+# Convert each video to an endlessly repeating GIF with an optimized palette.
+for style in balatro grainient; do
+  ffmpeg -y -i "${style}-example.mp4" \
+    -filter_complex "[0:v]fps=12,scale=360:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3" \
+    -loop 0 "${style}-example.gif"
+done
+```
+
+</details>
+
+Default-palette stills: [Balatro](assets/balatro.png) · [Grainient](assets/grainient.png).
 
 ## Common options
 
